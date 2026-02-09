@@ -3,6 +3,7 @@
 
 """TorchGeo models."""
 
+from .ace2 import ACE2_Weights, ace2_climate_emulator, run_ace2_inference
 from .api import get_model, get_model_weights, get_weight, list_models
 from .aurora import Aurora_Weights, aurora_swin_unet
 from .btc import BTC
@@ -68,6 +69,7 @@ from .vit import (
 )
 
 __all__ = (
+    'ACE2_Weights',
     'BTC',
     'CROMA',
     'DOFA',
@@ -116,6 +118,7 @@ __all__ = (
     'ViTLarge16_Weights',
     'ViTSmall14_DINOv2_Weights',
     'ViTSmall16_Weights',
+    'ace2_climate_emulator',
     'aurora_swin_unet',
     'copernicusfm_base',
     'croma_base',
@@ -133,6 +136,7 @@ __all__ = (
     'resnet18',
     'resnet50',
     'resnet152',
+    'run_ace2_inference',
     'scalemae_large_patch16',
     'swin_b',
     'swin_s',

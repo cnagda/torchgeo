@@ -69,6 +69,7 @@ See `torchange <https://github.com/Z-Zheng/pytorch-change-models>`__ for additio
 .. toctree::
    :maxdepth: 1
 
+   models/ace2
    models/aurora
 
 Utility Functions

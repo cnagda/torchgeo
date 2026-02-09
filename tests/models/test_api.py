@@ -9,6 +9,7 @@ import torch.nn as nn
 from torchvision.models._api import WeightsEnum
 
 from torchgeo.models import (
+    ACE2_Weights,
     Aurora_Weights,
     CopernicusFM_Base_Weights,
     CROMABase_Weights,
@@ -35,6 +36,7 @@ from torchgeo.models import (
     ViTLarge16_Weights,
     ViTSmall14_DINOv2_Weights,
     ViTSmall16_Weights,
+    ace2_climate_emulator,
     aurora_swin_unet,
     copernicusfm_base,
     croma_base,
@@ -70,6 +72,7 @@ from torchgeo.models import (
 )
 
 builders = [
+    ace2_climate_emulator,
     aurora_swin_unet,
     copernicusfm_base,
     croma_base,
@@ -100,6 +103,7 @@ builders = [
     vit_small_patch16_224,
 ]
 enums = [
+    ACE2_Weights,
     Aurora_Weights,
     CopernicusFM_Base_Weights,
     CROMABase_Weights,
@@ -131,7 +135,9 @@ enums = [
 
 @pytest.mark.parametrize('builder', builders)
 def test_get_model(builder: Callable[..., nn.Module]) -> None:
-    if builder == aurora_swin_unet:
+    if builder == ace2_climate_emulator:
+        pytest.importorskip('fme')
+    elif builder == aurora_swin_unet:
         pytest.importorskip('aurora')
 
     model = get_model(builder.__name__)
